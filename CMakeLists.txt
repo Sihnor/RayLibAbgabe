@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.29) # FetchContent is available in 3.11+
-project(KonsolenProjekt)
+project(RaylibAbgabe)
 
 # Generate compile_commands.json
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
@@ -26,7 +26,11 @@ endif()
 # Our Project
 
 add_executable(${PROJECT_NAME} main.cpp
-        main.cpp)
+        src/game.cpp
+        src/player.cpp
+        src/invader.cpp
+        src/bullet.cpp
+        )
 #set(raylib_VERBOSE 1)
 target_link_libraries(${PROJECT_NAME} raylib)
 
