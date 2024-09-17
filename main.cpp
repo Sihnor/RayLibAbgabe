@@ -28,6 +28,8 @@ int main()
     Sound fx = LoadSound("resources/sounds/spaceinvaders.wav");
     PlaySound(fx);
 
+    SetMasterVolume(volume);
+
     while (!WindowShouldClose())
     {
         if (currentScreen == GAME_PLAY)
