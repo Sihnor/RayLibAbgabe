@@ -4,8 +4,6 @@
 
 #include "particle.h"
 
-#include <cstdio>
-
 #include "raymath.h"
 
 void InitParticleSystem(ParticleSystem* particleSystem)
@@ -59,10 +57,10 @@ void UpdateParticleSystem(ParticleSystem* particleSystem)
 Color LerpColor(Color start, Color end, float t)
 {
     return (Color){
-        (unsigned char)Lerp(start.r, end.r, t),
-        (unsigned char)Lerp(start.g, end.g, t),
-        (unsigned char)Lerp(start.b, end.b, t),
-        (unsigned char)Lerp(start.a, end.a, t)
+        static_cast<unsigned char>(Lerp(start.r, end.r, t)),
+        static_cast<unsigned char>(Lerp(start.g, end.g, t)),
+        static_cast<unsigned char>(Lerp(start.b, end.b, t)),
+        static_cast<unsigned char>(Lerp(start.a, end.a, t))
     };
 }
 
