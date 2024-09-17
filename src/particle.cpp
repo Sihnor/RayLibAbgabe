@@ -6,6 +6,8 @@
 
 #include <cstdio>
 
+#include "raymath.h"
+
 void InitParticleSystem(ParticleSystem* particleSystem)
 {
     for (Particle particle : particleSystem->particles)
@@ -54,12 +56,25 @@ void UpdateParticleSystem(ParticleSystem* particleSystem)
     }
 }
 
+Color LerpColor(Color start, Color end, float t)
+{
+    return (Color){
+        (unsigned char)Lerp(start.r, end.r, t),
+        (unsigned char)Lerp(start.g, end.g, t),
+        (unsigned char)Lerp(start.b, end.b, t),
+        (unsigned char)Lerp(start.a, end.a, t)
+    };
+}
+
 void RenderParticleSystem(const ParticleSystem* particleSystem)
 {
     for (const Particle particle : particleSystem->particles)
     {
         if (particle.active)
-            DrawSphere(particle.position, 0.1f, YELLOW);
+        {
+            Color particleColor = LerpColor(YELLOW, RED, particle.lifetime);
+            DrawSphere(particle.position, 0.1f, particleColor);
+        }
     }
 }
 
