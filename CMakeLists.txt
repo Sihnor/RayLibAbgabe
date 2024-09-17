@@ -30,7 +30,9 @@ add_executable(${PROJECT_NAME} main.cpp
         src/player.cpp
         src/invader.cpp
         src/bullet.cpp
-        )
+        src/particle.cpp
+        src/particle.h
+)
 #set(raylib_VERBOSE 1)
 target_link_libraries(${PROJECT_NAME} raylib)
 

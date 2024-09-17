@@ -4,6 +4,7 @@
 
 #ifndef BULLET_H
 #define BULLET_H
+#include "particle.h"
 #include "raylib.h"
 
 typedef struct BULLET
@@ -11,6 +12,7 @@ typedef struct BULLET
     Vector3 position;
     bool active;
     float speed;
+    ParticleSystem particleSystem;
 } Bullet;
 
 void InitBullet(Bullet* bullet);
