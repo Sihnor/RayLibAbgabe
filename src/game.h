@@ -12,7 +12,7 @@
 
 #define MAX_INVADERS 10
 
-typedef struct Game
+typedef struct GAME
 {
     Camera camera;
     Player player;

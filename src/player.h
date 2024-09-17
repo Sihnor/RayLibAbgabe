@@ -6,7 +6,7 @@
 #define PLAYER_H
 #include "raylib.h"
 
-typedef struct Player
+typedef struct PLAYER
 {
     Vector3 position;
     float speed;

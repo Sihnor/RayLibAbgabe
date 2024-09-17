@@ -8,7 +8,7 @@
 
 #define MAX_PARTICLES 100
 
-typedef struct Particle
+typedef struct PARTICLE
 {
     Vector3 position;
     Vector3 velocity;

@@ -6,7 +6,7 @@
 #define INVADER_H
 #include "raylib.h"
 
-typedef struct Invader
+typedef struct INVADER
 {
     Vector3 position;
     bool active;
