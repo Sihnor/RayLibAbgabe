@@ -18,9 +18,10 @@ void InitGame(Game* game)
     InitPlayer(&game->player);
 
     // Invader initialisieren
+    const char* invaderModelPath = "resources/SpaceInvader.obj";
     for (int i = 0; i < MAX_INVADERS; i++)
     {
-        InitInvader(&game->invaders[i]);
+        InitInvader(&game->invaders[i], invaderModelPath);
     }
 
     // Kuglen initialisieren
