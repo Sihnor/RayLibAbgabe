@@ -31,6 +31,8 @@ void RenderInvader(const Invader* invader) {
 
 void OnDeathInvader(Invader* invader)
 {
+    Sound fx = LoadSound("resources/sounds/invaderkilled.wav");
+    PlaySound(fx);
     invader->active = false;
     invader->position = (Vector3){ 100.0f, 100.0f, 100.0f };
 }

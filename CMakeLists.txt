@@ -32,6 +32,7 @@ add_executable(${PROJECT_NAME} main.cpp
         src/bullet.cpp
         src/particle.cpp
         src/particle.h
+        src/enums/GameScreen.h
 )
 #set(raylib_VERBOSE 1)
 target_link_libraries(${PROJECT_NAME} raylib)

@@ -35,6 +35,8 @@ void RenderBullet(Bullet* bullet) {
 
 void FireBullet(Bullet* bullet, Vector3 playerPosition) {
     if (!bullet->active) {
+        Sound fx = LoadSound("resources/sounds/shoot.wav");
+        PlaySound(fx);
         bullet->position = playerPosition;
         bullet->active = true;
     }
