@@ -3,20 +3,52 @@
 //
 #include "invader.h"
 
+#include <cstdio>
+
 void InitInvader(Invader* invader, const char* modelPath, const Vector3 position) {
     invader->active = true;
 
     invader->model = LoadModel(modelPath);
     invader->position = position;
+    invader->direction = MOVE_RIGHT;
+    invader->speed = 0.01f;
+    invader->offset = 0.0f;
 }
 
 void UpdateInvader(Invader* invader) {
-    if (invader->active) {
-        invader->position.z += 0.01f;
-        if (invader->position.z > 5.0f) {
-            const float x = GetRandomValue(-5, 5);
-            const float z = GetRandomValue(-10, -1);
-            invader->position = (Vector3){ x, 0.0f, z };
+    if (invader->active)
+    {
+        if (invader->direction == MOVE_DOWN) {
+            invader->offset += invader->speed;
+            invader->position.z += invader->speed;
+
+            if (invader->offset > 1.0f) {
+                invader->direction = (invader->lastDirection == MOVE_LEFT) ? MOVE_RIGHT : MOVE_LEFT;
+                invader->offset = 0.0f;
+            }
+        }
+
+        if (invader->direction == MOVE_RIGHT) {
+            invader->position.x += invader->speed;
+            invader->offset += invader->speed;
+            printf("Offset: %f\n", invader->offset);
+
+            if (invader->offset > 5.0f) {
+                invader->lastDirection = MOVE_RIGHT;
+                invader->direction = MOVE_DOWN;
+                invader->offset = 0.0f;
+            }
+        }
+
+        if (invader->direction == MOVE_LEFT) {
+            invader->position.x -= invader->speed;
+            invader->offset += invader->speed;
+
+            if (invader->offset > 5.0f) {
+                invader->lastDirection = MOVE_LEFT;
+                invader->direction = MOVE_DOWN;
+                invader->offset = 0.0f;
+            }
         }
     }
 }

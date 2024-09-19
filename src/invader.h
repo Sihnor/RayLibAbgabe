@@ -8,18 +8,24 @@
 
 #define MAX_INVADERS 30  // 10 (breit) x 3 (hoch)
 
+typedef enum
+{
+    MOVE_LEFT,
+    MOVE_RIGHT,
+    MOVE_DOWN
+} MoveDirection;
+
 typedef struct INVADER
 {
     Vector3 position;
     bool active;
     Model model;
+    float offset;
+    MoveDirection direction;
+    MoveDirection lastDirection;
+    float speed;
 } Invader;
 
-typedef enum
-{
-    MOVE_LEFT,
-    MOVE_RIGHT,
-} MoveDirection;
 
 void InitInvader(Invader *invader, const char* modelPath, const Vector3 position);
 void UpdateInvader(Invader *invader);
