@@ -40,6 +40,9 @@ int main()
 
     while (!WindowShouldClose())
     {
+        BeginDrawing();
+        ClearBackground(BLACK);
+
         if (currentScreen == GAME_PLAY)
         {
             SetGameSpeed(&game, speed);
@@ -59,8 +62,6 @@ int main()
             continue;
         }
 
-        BeginDrawing();
-        ClearBackground(RAYWHITE);
 
         if (currentScreen == MENU_MAIN)
         {

@@ -5,6 +5,8 @@
 #include "raylib.h"
 #include "game.h"
 
+#include "star.h"
+
 void InitGame(Game* game)
 {
     // Kamera initialisieren
@@ -35,6 +37,8 @@ void InitGame(Game* game)
 
     // Kuglen initialisieren
     InitBullet(&game->bullet);
+
+    InitStarField(&game->starField);
 }
 
 void UpdateGame(Game* game) {
@@ -68,13 +72,17 @@ void UpdateGame(Game* game) {
         game->deadInvaders = 0;
         game->gameState = 1;
     }
+
+    UpdateStarField(&game->starField);
 }
 
 void RenderGame(Game* game) {
     BeginDrawing();
-    ClearBackground(RAYWHITE);
+    ClearBackground(BLACK);
 
     BeginMode3D(game->camera);
+
+    RenderStarField(&game->starField);
 
     // Spieler und Objekte zeichnen
     RenderPlayer(&game->player);

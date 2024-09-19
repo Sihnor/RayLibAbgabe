@@ -9,6 +9,7 @@
 #include "invader.h"
 #include "player.h"
 #include "raylib.h"
+#include "star.h"
 
 #define MAX_INVADERS 30
 
@@ -20,6 +21,7 @@ typedef struct GAME
     Bullet bullet;
     int deadInvaders;
     int gameState;
+    StarField starField;
 } Game;
 
 void InitGame(Game *game);
