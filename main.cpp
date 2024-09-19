@@ -39,6 +39,12 @@ int main()
         {
             UpdateGame(&game);
             RenderGame(&game);
+            if (GameState(&game) == 1) {
+                currentScreen = GAME_WIN;
+            }
+            else if (GameState(&game) == 2) {
+                //currentScreen = GAME_OVER;
+            }
 
             // Zurück zum Hauptmenü
             if (IsKeyPressed(KEY_ESCAPE)) {
@@ -99,6 +105,17 @@ int main()
             DrawText("Drücke [ESC] um zurückzukehren", 220, 300, 20, DARKGRAY);
             // Zurück zum Hauptmenü
             if (IsKeyPressed(KEY_ESCAPE)) {
+                currentScreen = MENU_MAIN;
+            }
+        }
+
+        if (currentScreen == GAME_WIN)
+        {
+            DrawText("GEWONNEN!", 300, 200, 40, DARKGRAY);
+            DrawText("Drücke [ESC] um zurückzukehren", 220, 300, 20, DARKGRAY);
+            // Zurück zum Hauptmenü
+            if (IsKeyPressed(KEY_ESCAPE)) {
+                InitGame(&game);
                 currentScreen = MENU_MAIN;
             }
         }

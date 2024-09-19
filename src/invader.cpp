@@ -3,7 +3,6 @@
 //
 #include "invader.h"
 
-#include <cstdio>
 
 void InitInvader(Invader* invader, const char* modelPath, const Vector3 position) {
     invader->active = true;
@@ -31,7 +30,6 @@ void UpdateInvader(Invader* invader) {
         if (invader->direction == MOVE_RIGHT) {
             invader->position.x += invader->speed;
             invader->offset += invader->speed;
-            printf("Offset: %f\n", invader->offset);
 
             if (invader->offset > 5.0f) {
                 invader->lastDirection = MOVE_RIGHT;

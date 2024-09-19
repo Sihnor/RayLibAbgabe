@@ -13,6 +13,8 @@ void InitGame(Game* game)
     game->camera.up = (Vector3){ 0, 1, 0 };
     game->camera.fovy = 45.0f;
     game->camera.projection = CAMERA_PERSPECTIVE;
+    game->gameState = 0;
+    game->deadInvaders = 0;
 
     // Spieler initialisieren
     InitPlayer(&game->player);
@@ -52,8 +54,13 @@ void UpdateGame(Game* game) {
         UpdateInvader(&invader);
         if (game->bullet.active && CheckCollisionSpheres(game->bullet.position, 0.2f, invader.position, 0.5f)) {
             OnDeathInvader(&invader);
+            game->deadInvaders++;
             game->bullet.active = false;
         }
+    }
+    if (game->deadInvaders == MAX_INVADERS) {
+        game->deadInvaders = 0;
+        game->gameState = 1;
     }
 }
 
@@ -76,4 +83,8 @@ void RenderGame(Game* game) {
     DrawText("Bewege mit Links/Rechts, Schieße mit Leertaste", 10, 10, 20, DARKGRAY);
 
     EndDrawing();
+}
+
+int GameState(Game* game) {
+    return game->gameState;
 }

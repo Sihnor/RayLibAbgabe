@@ -18,10 +18,13 @@ typedef struct GAME
     Player player;
     Invader invaders[MAX_INVADERS];
     Bullet bullet;
+    int deadInvaders;
+    int gameState;
 } Game;
 
 void InitGame(Game *game);
 void UpdateGame(Game *game);
 void RenderGame(Game *game);
+int GameState(Game *game); // 0 = OnGoing, 1 = Win, 2 = Lose
 
 #endif //GAME_H
