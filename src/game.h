@@ -26,5 +26,6 @@ void InitGame(Game *game);
 void UpdateGame(Game *game);
 void RenderGame(Game *game);
 int GameState(Game *game); // 0 = OnGoing, 1 = Win, 2 = Lose
+void SetGameSpeed(Game *game, float speed);
 
 #endif //GAME_H

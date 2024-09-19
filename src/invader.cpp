@@ -3,6 +3,8 @@
 //
 #include "invader.h"
 
+#include <cstdio>
+
 
 void InitInvader(Invader* invader, const char* modelPath, const Vector3 position) {
     invader->active = true;
@@ -10,7 +12,7 @@ void InitInvader(Invader* invader, const char* modelPath, const Vector3 position
     invader->model = LoadModel(modelPath);
     invader->position = position;
     invader->direction = MOVE_RIGHT;
-    invader->speed = 0.01f;
+    invader->speed = 0.01;
     invader->offset = 0.0f;
 }
 
@@ -62,7 +64,7 @@ void OnDeathInvader(Invader* invader)
     Sound fx = LoadSound("resources/sounds/invaderkilled.wav");
     PlaySound(fx);
     invader->active = false;
-    invader->position = (Vector3){ 100.0f, 100.0f, 100.0f };
+    invader->position = (Vector3){ 100.0f, -100.0f, -100.0f };
 }
 
 void UnloadInvader(const Invader* invader) {

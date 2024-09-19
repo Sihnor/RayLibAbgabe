@@ -57,7 +57,13 @@ void UpdateGame(Game* game) {
             game->deadInvaders++;
             game->bullet.active = false;
         }
+
+        if (invader.position.z > 3.5f)
+        {
+            game->gameState = 2;
+        }
     }
+
     if (game->deadInvaders == MAX_INVADERS) {
         game->deadInvaders = 0;
         game->gameState = 1;
@@ -87,4 +93,10 @@ void RenderGame(Game* game) {
 
 int GameState(Game* game) {
     return game->gameState;
+}
+
+void SetGameSpeed(Game* game, float speed) {
+    for (auto& invader : game->invaders) {
+        invader.speed = speed;
+    }
 }

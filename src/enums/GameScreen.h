@@ -10,7 +10,8 @@ typedef enum GameScreen
     MENU_MAIN,
     MENU_SETTINGS,
     GAME_PLAY,
-    GAME_WIN
+    GAME_WIN,
+    GAME_OVER
 };
 
 #endif //GAMESCREEN_H
