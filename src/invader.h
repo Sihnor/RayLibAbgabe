@@ -6,6 +6,8 @@
 #define INVADER_H
 #include "raylib.h"
 
+#define MAX_INVADERS 30  // 10 (breit) x 3 (hoch)
+
 typedef struct INVADER
 {
     Vector3 position;
@@ -13,7 +15,13 @@ typedef struct INVADER
     Model model;
 } Invader;
 
-void InitInvader(Invader *invader, const char* modelPath);
+typedef enum
+{
+    MOVE_LEFT,
+    MOVE_RIGHT,
+} MoveDirection;
+
+void InitInvader(Invader *invader, const char* modelPath, const Vector3 position);
 void UpdateInvader(Invader *invader);
 void RenderInvader(const Invader *invader);
 void OnDeathInvader(Invader *invader);

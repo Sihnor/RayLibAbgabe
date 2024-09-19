@@ -10,7 +10,7 @@
 #include "player.h"
 #include "raylib.h"
 
-#define MAX_INVADERS 10
+#define MAX_INVADERS 30
 
 typedef struct GAME
 {

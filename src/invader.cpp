@@ -3,13 +3,11 @@
 //
 #include "invader.h"
 
-void InitInvader(Invader* invader, const char* modelPath) {
-    const float x = GetRandomValue(-5, 5);
-    const float z = GetRandomValue(-10, -1);
-    invader->position = (Vector3){ x, 0.0f, z };
+void InitInvader(Invader* invader, const char* modelPath, const Vector3 position) {
     invader->active = true;
 
     invader->model = LoadModel(modelPath);
+    invader->position = position;
 }
 
 void UpdateInvader(Invader* invader) {

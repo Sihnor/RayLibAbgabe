@@ -7,7 +7,7 @@
 int main()
 {
     //InitWindow(800, 600, "3D Space Invader");
-    InitWindow(1920, 1080, "3D Space Invader");
+    InitWindow(800, 600, "3D Space Invader");
     SetTargetFPS(60);
     SetExitKey(KEY_NULL);
     Image icon = LoadImage("resources/images/SpaceInvadersLogo.png");

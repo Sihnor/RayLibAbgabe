@@ -1,0 +1,72 @@
+
+
+#define SCREEN_WIDTH 800
+#define SCREEN_HEIGHT 600
+#define GRID_SIZE 50 // Größe eines einzelnen Grid-Quadrats
+
+    InitWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "Grid Example");
+
+    Camera2D cam = {0};
+    cam.target = (Vector2){0, 0};
+    cam.offset = (Vector2){SCREEN_WIDTH /2, SCREEN_HEIGHT/2};
+    cam.rotation = 0;
+    cam.zoom = 1;
+
+    // Variablen für das Speichern der Position des angeklickten Quadrats
+    int selectedX = -1;
+    int selectedY = -1;
+
+    SetTargetFPS(60);
+
+    while (!WindowShouldClose())
+    {
+        // Kamera-Steuerung
+        if (IsKeyDown(KEY_D)) cam.target.x += 10;
+        if (IsKeyDown(KEY_A)) cam.target.x -= 10;
+        if (IsKeyDown(KEY_W)) cam.target.y -= 10;
+        if (IsKeyDown(KEY_S)) cam.target.y += 10;
+
+        if (IsKeyDown(KEY_Q)) cam.zoom += 0.005f;
+        if (IsKeyDown(KEY_E)) cam.zoom -= 0.005f;
+
+        // Hole die aktuelle Mausposition
+        Vector2 mousePosition = GetScreenToWorld2D(GetMousePosition(), cam);
+
+        // Überprüfe, ob die linke Maustaste gedrückt wurde
+        if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
+        {
+            // Berechne die Position des angeklickten Grid-Quadrats
+            selectedX = (int)mousePosition.x / GRID_SIZE;
+            selectedY = (int)mousePosition.y / GRID_SIZE;
+        }
+
+        BeginDrawing();
+        ClearBackground(RAYWHITE);
+
+        BeginMode2D(cam);
+
+        // Zeichne das Grid
+        for (int x = 0; x < SCREEN_WIDTH / GRID_SIZE; x++)
+        {
+            for (int y = 0; y < SCREEN_HEIGHT / GRID_SIZE; y++)
+            {
+                // Überprüfe, ob dieses Quadrat das ausgewählte ist
+                if (x == selectedX && y == selectedY)
+                {
+                    // Zeichne das ausgewählte Quadrat in Grün
+                    DrawRectangle(x * GRID_SIZE, y * GRID_SIZE, GRID_SIZE, GRID_SIZE, GREEN);
+                }
+                else
+                {
+                    // Zeichne das Quadrat mit einem grauen Rand
+                    DrawRectangleLines(x * GRID_SIZE, y * GRID_SIZE, GRID_SIZE, GRID_SIZE, LIGHTGRAY);
+                }
+            }
+        }
+        EndMode2D();
+
+        EndDrawing();
+    }
+    CloseWindow();
+
+    return 0;
