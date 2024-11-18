@@ -41,7 +41,7 @@ int main()
     while (!WindowShouldClose())
     {
         BeginDrawing();
-        ClearBackground(BLACK);
+        ClearBackground(RAYWHITE);
 
         if (currentScreen == GAME_PLAY)
         {
